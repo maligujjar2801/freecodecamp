@@ -1,0 +1,5 @@
+cast=input("Enter your cast:")
+if cast=="Gujjar":
+    print("You're a legend.)
+else:
+    print("$@$%$@")
