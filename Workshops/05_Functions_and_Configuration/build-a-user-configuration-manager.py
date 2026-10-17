@@ -50,10 +50,10 @@ def view_settings(settings):
     if not settings:
         return "No settings available."
 
-    result = "Current User Settings:\\n"
+    result = "Current User Settings:\n"
 
     for key, value in settings.items():
-        result += f"{key.capitalize()}: {value}\\n"
+        result += f"{key.capitalize()}: {value}\n"
 
     return result
 
