@@ -12,4 +12,4 @@ def number_pattern(n):
     
     return result.strip()
 
-print(number_pattern(5))
+print(number_pattern(5)) 
