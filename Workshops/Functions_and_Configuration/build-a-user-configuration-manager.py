@@ -1,14 +1,9 @@
-** start of main.py **
-
-# Dictionary to store user configuration preferences
 test_settings = {
     "theme": "dark",
     "language": "english",
     "notifications": "enabled"
 }
 
-
-# Function to add a new setting
 def add_setting(settings, setting):
     key, value = setting
     key = key.lower()
@@ -20,8 +15,6 @@ def add_setting(settings, setting):
     settings[key] = value
     return f"Setting '{key}' added with value '{value}' successfully!"
 
-
-# Function to update an existing setting
 def update_setting(settings, setting):
     key, value = setting
     key = key.lower()
@@ -33,8 +26,6 @@ def update_setting(settings, setting):
 
     return f"Setting '{key}' does not exist! Cannot update a non-existing setting."
 
-
-# Function to delete a setting
 def delete_setting(settings, key):
     key = key.lower()
 
@@ -44,8 +35,6 @@ def delete_setting(settings, key):
 
     return "Setting not found!"
 
-
-# Function to view all settings
 def view_settings(settings):
     if not settings:
         return "No settings available."
@@ -56,5 +45,3 @@ def view_settings(settings):
         result += f"{key.capitalize()}: {value}\n"
 
     return result
-
-** end of main.py **
