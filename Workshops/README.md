@@ -6,18 +6,25 @@ This directory groups Python practice files by the main concept they demonstrate
 
 | Folder | Topics |
 |---|---|
-| [01 Python Basics](01_Python_Basics/) | `input()`, variables, type conversion, and data types |
-| [02 Collections](02_Collections/) | Sets, subset/superset, union, intersection, and symmetric difference |
-| [03 Object-Oriented Programming](03_Object_Oriented_Programming/) | Classes, objects, attributes, methods, validation, and `__str__` |
-| [04 Validation and Regular Expressions](04_Validation_and_Regular_Expressions/) | Data validation, `re.fullmatch`, and ISBN check digits |
-| [05 Functions and Configuration](05_Functions_and_Configuration/) | Functions, loops, string building, and dictionary configuration |
-| [06 Data Structures](06_Data_Structures/) | Linked lists, nodes, and references |
-| [07 Recursion](07_Recursion/) | Recursive calls, base cases, and building a count-up list |
+| [Python Basics](Python_Basics/) | `input()`, variables, type conversion, and data types |
+| [Collections](Collections/) | Sets, subset/superset, union, intersection, and symmetric difference |
+| [Object-Oriented Programming](Object_Oriented_Programming/) | Classes, objects, attributes, methods, validation, and `__str__` |
+| [Validation and Regular Expressions](Validation_and_Regular_Expressions/) | Data validation, `re.fullmatch`, and ISBN check digits |
+| [Functions and Configuration](Functions_and_Configuration/) | Functions, loops, string building, and dictionary configuration |
+| [Data Structures](Data_Structures/) | Linked lists, nodes, and references |
+| [Recursion](Recursion/) | Recursive calls, base cases, and building lists recursively |
+
+## Recursion lab
+
+- [Count Up — source file](Recursion/countup%20function.py)
+- [Count Up — notes](Recursion/Notes.md)
+- [Range of Numbers Generator — source file](Recursion/range_of_numbers.py)
+- [Range of Numbers Generator — detailed notes](Recursion/range_of_numbers_notes.md)
 
 ## Notes and source preservation
 
 - Notes are stored beside the Python exercise they explain.
-- The original recursion notes are retained in [07 Recursion/Notes.md](07_Recursion/Notes.md).
+- Existing recursion notes and exercise files are retained.
 - Some freeCodeCamp files contain platform wrapper markers such as `** start of main.py **`; these markers are not valid Python syntax outside the exercise interface. The original exercise content is preserved.
 - This is a learning repository, so the notes call out known issues in the submitted examples rather than silently rewriting the original solutions.
 
