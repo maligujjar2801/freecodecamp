@@ -65,7 +65,6 @@ Every expert was once a beginner — and this is my starting point 🚀
 
 ⭐ Thanks for visiting my profile!
 
-
 ---
 
 ## 📚 Python Workshops
@@ -73,12 +72,12 @@ Every expert was once a beginner — and this is my starting point 🚀
 Practice exercises are organized by topic, with matching Markdown notes:
 
 - [Workshops index](Workshops/README.md)
-- [Python basics](Workshops/01_Python_Basics/)
-- [Collections and set operations](Workshops/02_Collections/)
-- [Object-oriented programming](Workshops/03_Object_Oriented_Programming/)
-- [Validation and regular expressions](Workshops/04_Validation_and_Regular_Expressions/)
-- [Functions and configuration](Workshops/05_Functions_and_Configuration/)
-- [Data structures](Workshops/06_Data_Structures/)
-- [Recursion](Workshops/07_Recursion/)
+- [Python basics](Workshops/Python_Basics/)
+- [Collections and set operations](Workshops/Collections/)
+- [Object-oriented programming](Workshops/Object_Oriented_Programming/)
+- [Validation and regular expressions](Workshops/Validation_and_Regular_Expressions/)
+- [Functions and configuration](Workshops/Functions_and_Configuration/)
+- [Data structures](Workshops/Data_Structures/)
+- [Recursion](Workshops/Recursion/)
 
 The original workshop scripts have been organized into these folders. Their contents are preserved; topic-specific notes explain the concepts and point out any known issues in the submitted exercise files.
