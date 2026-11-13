@@ -14,17 +14,17 @@ The function must also follow the exact messages and return behaviour required b
 
 ## 2. The mathematical model
 
-Finding the square root of a number is equivalent to finding a value \(x\) that satisfies:
+Finding the square root of a number is equivalent to finding a value $x$ that satisfies:
 
-\[
+$
 x^2 = \text{square\_target}
-\]
+$
 
 We can rearrange this as a root-finding problem:
 
-\[
+$
 f(x) = x^2 - \text{square\_target} = 0
-\]
+$
 
 The bisection method does not need to guess the answer directly. It keeps an interval containing the answer and repeatedly cuts that interval in half.
 
@@ -41,15 +41,15 @@ Therefore, the square root is inside the interval.
 
 For example, when the target is **225**, the square root is **15**, and the initial interval is:
 
-\[
+$
 0 \leq \sqrt{225} \leq 225
-\]
+$
 
 When the target is **0.25**, the square root is **0.5**, and the initial interval is:
 
-\[
+$
 0 \leq \sqrt{0.25} \leq 1
-\]
+$
 
 The interval may be much wider than necessary at the beginning. That is fine: bisection progressively narrows it.
 
@@ -57,23 +57,23 @@ The interval may be much wider than necessary at the beginning. That is fine: bi
 
 Calculate the midpoint:
 
-\[
+$
 m = \frac{\text{lower}+\text{upper}}{2}
-\]
+$
 
 Then square it and compare the result with the target.
 
 | Comparison | Meaning | Correct update |
 |---|---|---|
-| \(m^2 < \text{target}\) | The midpoint is below the positive square root. | Move the lower boundary up to \(m\). |
-| \(m^2 > \text{target}\) | The midpoint is above the positive square root. | Move the upper boundary down to \(m\). |
-| \(m^2 = \text{target}\) | The exact square root has been found. | Return the midpoint immediately. |
+| $m^2 < \text{target}$ | The midpoint is below the positive square root. | Move the lower boundary up to $m$. |
+| $m^2 > \text{target}$ | The midpoint is above the positive square root. | Move the upper boundary down to $m$. |
+| $m^2 = \text{target}$ | The exact square root has been found. | Return the midpoint immediately. |
 
 **The comparison directions are important:** a midpoint that is too small moves the lower boundary up; a midpoint that is too large moves the upper boundary down.
 
 ### Example: finding the square root of 25
 
-Start with the interval \([0,25]\).
+Start with the interval $[0,25]$.
 
 | Step | Midpoint | Midpoint squared | Decision | Remaining interval |
 |---:|---:|---:|---|---|
@@ -89,15 +89,15 @@ Each comparison discards the half that cannot contain the answer. The interval k
 
 The interval width is:
 
-\[
+$
 \text{width} = \text{upper} - \text{lower}
-\]
+$
 
 The algorithm checks whether:
 
-\[
+$
 \text{upper} - \text{lower} \leq \text{tolerance}
-\]
+$
 
 When this condition becomes true, the search interval is sufficiently narrow, so the function returns its midpoint.
 
@@ -109,11 +109,11 @@ Because the true answer is still inside the interval, the distance from its midp
 
 For a target of **225**, the starting interval has width **225**. After 10 bisections, its width is:
 
-\[
+$
 \frac{225}{2^{10}} \approx 0.2197
-\]
+$
 
-That is still greater than \(10^{-7}\). The algorithm must therefore print the failure message and return **None**, exactly as the lab expects.
+That is still greater than $10^{-7}$. The algorithm must therefore print the failure message and return **None**, exactly as the lab expects.
 
 ## 5. Why the original loop was simplified
 
@@ -150,12 +150,12 @@ The line numbers below match the non-empty lines in **square_root_bisection.py**
 | 3–5 | **raise ValueError(...)** | Stops execution and raises the required exception with the exact message specified by the lab. The message is split across lines only to keep the source readable. |
 | 7 | **if square_target == 0 or square_target == 1:** | Checks the two special inputs whose square roots are already known exactly. |
 | 8 | **print(...)** | Prints the special-case message. It deliberately says “is” rather than “is approximately”, matching the user story. |
-| 9 | **return square_target** | Returns the input itself. Both \(0^2=0\) and \(1^2=1\). Returning also ends the function immediately. |
+| 9 | **return square_target** | Returns the input itself. Both $0^2=0$ and $1^2=1$. Returning also ends the function immediately. |
 | 11 | **lower = 0** | Establishes the lowest possible starting boundary for the positive square root. |
-| 12 | **upper = max(1, square_target)** | Chooses an upper boundary that contains the square root for targets below or above \(1\). The built-in **max** function is not an imported module. |
+| 12 | **upper = max(1, square_target)** | Chooses an upper boundary that contains the square root for targets below or above $1$. The built-in **max** function is not an imported module. |
 | 14 | **for _ in range(maximum):** | Repeats the bisection process no more than the allowed number of times. The underscore means the loop counter is not needed in the algorithm. |
 | 15 | **root = (lower + upper) / 2** | Finds the midpoint of the current interval. This is the current candidate for the square root. |
-| 16 | **root_squared = root ** 2** | Squares the candidate. The ** operator means exponentiation, so this calculates the candidate multiplied by itself. |
+| 16 | **root_squared = root ** 2** | Squares the candidate. Python's power operator squares the candidate, calculating it multiplied by itself. |
 | 18 | **if root_squared == square_target:** | Checks whether the midpoint is an exact solution. This is an optional early exit; the tolerance check is still needed because many square roots are not reached exactly in floating-point arithmetic. |
 | 19–21 | **print(...)** | Prints the required approximate-result message. The f-string inserts the actual target and candidate value into the message. |
 | 22 | **return root** | Returns the exact midpoint and stops the function when the equality check succeeds. |
@@ -170,11 +170,11 @@ The line numbers below match the non-empty lines in **square_root_bisection.py**
 | 36 | **print(...)** | This line is reached only when the loop finishes without finding an exact result or a sufficiently narrow interval. It prints the required failure message. |
 | 37 | **return None** | Indicates that the function did not achieve the requested tolerance within the permitted iterations. |
 | 40 | **if __name__ == "__main__":** | Runs the examples only when this file is executed directly. If another Python file imports the function, these demonstrations do not run automatically. |
-| 41 | **square_root_bisection(81, 1e-3, 50)** | Tests an integer target with a tolerance of \(10^{-3}\) and a 50-iteration limit. |
+| 41 | **square_root_bisection(81, 1e-3, 50)** | Tests an integer target with a tolerance of $10^{-3}$ and a 50-iteration limit. |
 | 42 | **square_root_bisection(225, 1e-3, 100)** | Tests a larger perfect square with a 100-iteration limit. |
 | 43 | **square_root_bisection(225, 1e-7, 10)** | Deliberately tests insufficient iterations. It should print the failure message and return **None**. |
-| 44 | **square_root_bisection(0.001, 1e-7, 50)** | Tests a small positive target below \(1\), checking that the initial upper bound is chosen correctly. |
-| 45 | **square_root_bisection(0.25, 1e-7, 50)** | Tests another target below \(1\). The exact midpoint \(0.5\) can be found during the search. |
+| 44 | **square_root_bisection(0.001, 1e-7, 50)** | Tests a small positive target below $1$, checking that the initial upper bound is chosen correctly. |
+| 45 | **square_root_bisection(0.25, 1e-7, 50)** | Tests another target below $1$. The exact midpoint $0.5$ can be found during the search. |
 
 ## 7. Important Python ideas used
 
@@ -226,20 +226,20 @@ The implementation was checked locally against all 23 checks represented in the 
 | Negative input and exact ValueError message | Passed |
 | Target 0 return value and print message | Passed |
 | Target 1 return value and print message | Passed |
-| Target 0.001 at tolerance \(10^{-7}\) | Passed |
-| Target 0.25 at tolerance \(10^{-7}\) | Passed |
-| Target 81 at tolerance \(10^{-3}\) | Passed |
-| Target 225 at tolerances \(10^{-3}\), \(10^{-5}\), and \(10^{-7}\) | Passed |
+| Target 0.001 at tolerance $10^{-7}$ | Passed |
+| Target 0.25 at tolerance $10^{-7}$ | Passed |
+| Target 81 at tolerance $10^{-3}$ | Passed |
+| Target 225 at tolerances $10^{-3}$, $10^{-5}$, and $10^{-7}$ | Passed |
 | Target 225 with only 10 iterations | Passed — returns **None** and prints the required failure message |
 
 These are local reproductions of the supplied assertions. They do not represent a submission to or a live result from the freeCodeCamp website.
 
 ## 9. Complexity
 
-Let \(W\) be the initial interval width and \(n\) the number of iterations.
+Let $W$ be the initial interval width and $n$ the number of iterations.
 
-- **Time complexity:** \(O(n)\). Each iteration performs a constant number of arithmetic operations and comparisons.
-- **Space complexity:** \(O(1)\). The function stores only a fixed number of variables.
+- **Time complexity:** $O(n)$. Each iteration performs a constant number of arithmetic operations and comparisons.
+- **Space complexity:** $O(1)$. The function stores only a fixed number of variables.
 - **Interval reduction:** Each completed bisection halves the interval width.
 
 The method is efficient because it reduces the uncertainty exponentially with respect to the number of iterations.
