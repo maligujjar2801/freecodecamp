@@ -16,15 +16,15 @@ The function must also follow the exact messages and return behaviour required b
 
 Finding the square root of a number is equivalent to finding a value $x$ that satisfies:
 
-$
+$$
 x^2 = \text{square\_target}
-$
+$$
 
 We can rearrange this as a root-finding problem:
 
-$
+$$
 f(x) = x^2 - \text{square\_target} = 0
-$
+$$
 
 The bisection method does not need to guess the answer directly. It keeps an interval containing the answer and repeatedly cuts that interval in half.
 
@@ -41,15 +41,15 @@ Therefore, the square root is inside the interval.
 
 For example, when the target is **225**, the square root is **15**, and the initial interval is:
 
-$
+$$
 0 \leq \sqrt{225} \leq 225
-$
+$$
 
 When the target is **0.25**, the square root is **0.5**, and the initial interval is:
 
-$
+$$
 0 \leq \sqrt{0.25} \leq 1
-$
+$$
 
 The interval may be much wider than necessary at the beginning. That is fine: bisection progressively narrows it.
 
@@ -57,9 +57,9 @@ The interval may be much wider than necessary at the beginning. That is fine: bi
 
 Calculate the midpoint:
 
-$
+$$
 m = \frac{\text{lower}+\text{upper}}{2}
-$
+$$
 
 Then square it and compare the result with the target.
 
@@ -89,15 +89,15 @@ Each comparison discards the half that cannot contain the answer. The interval k
 
 The interval width is:
 
-$
+$$
 \text{width} = \text{upper} - \text{lower}
-$
+$$
 
 The algorithm checks whether:
 
-$
+$$
 \text{upper} - \text{lower} \leq \text{tolerance}
-$
+$$
 
 When this condition becomes true, the search interval is sufficiently narrow, so the function returns its midpoint.
 
@@ -109,9 +109,9 @@ Because the true answer is still inside the interval, the distance from its midp
 
 For a target of **225**, the starting interval has width **225**. After 10 bisections, its width is:
 
-$
+$$
 \frac{225}{2^{10}} \approx 0.2197
-$
+$$
 
 That is still greater than $10^{-7}$. The algorithm must therefore print the failure message and return **None**, exactly as the lab expects.
 
