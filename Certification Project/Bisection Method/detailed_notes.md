@@ -141,25 +141,25 @@ The next midpoint is calculated at the top of the next loop iteration. This keep
 
 ## 6. Code explained line by line
 
-The line numbers below match the non-empty lines in **square_root_bisection.py**.
+The line numbers below match the non-empty lines in `square_root_bisection.py`.
 
 | Line | Code or code block | Explanation |
 |---:|---|---|
-| 1 | **def square_root_bisection(square_target, tolerance=0.01, maximum=100):** | Defines the function with exactly three parameters. The two optional parameters have default values, so the caller can supply only the target or override the precision and iteration limit. |
-| 2 | **if square_target < 0:** | Checks whether the target is negative. A negative number has no real-valued square root. |
+| 1 | `def square_root_bisection(square_target, tolerance=0.01, maximum=100):` | Defines the function with exactly three parameters. The two optional parameters have default values, so the caller can supply only the target or override the precision and iteration limit. |
+| 2 | `if square_target < 0:` | Checks whether the target is negative. A negative number has no real-valued square root. |
 | 3–5 | **raise ValueError(...)** | Stops execution and raises the required exception with the exact message specified by the lab. The message is split across lines only to keep the source readable. |
-| 7 | **if square_target == 0 or square_target == 1:** | Checks the two special inputs whose square roots are already known exactly. |
+| 7 | `if square_target == 0 or square_target == 1:` | Checks the two special inputs whose square roots are already known exactly. |
 | 8 | **print(...)** | Prints the special-case message. It deliberately says “is” rather than “is approximately”, matching the user story. |
-| 9 | **return square_target** | Returns the input itself. Both $0^2=0$ and $1^2=1$. Returning also ends the function immediately. |
+| 9 | `return square_target` | Returns the input itself. Both $0^2=0$ and $1^2=1$. Returning also ends the function immediately. |
 | 11 | **lower = 0** | Establishes the lowest possible starting boundary for the positive square root. |
-| 12 | **upper = max(1, square_target)** | Chooses an upper boundary that contains the square root for targets below or above $1$. The built-in **max** function is not an imported module. |
-| 14 | **for _ in range(maximum):** | Repeats the bisection process no more than the allowed number of times. The underscore means the loop counter is not needed in the algorithm. |
+| 12 | `upper = max(1, square_target)` | Chooses an upper boundary that contains the square root for targets below or above $1$. The built-in **max** function is not an imported module. |
+| 14 | `for _ in range(maximum):` | Repeats the bisection process no more than the allowed number of times. The underscore means the loop counter is not needed in the algorithm. |
 | 15 | **root = (lower + upper) / 2** | Finds the midpoint of the current interval. This is the current candidate for the square root. |
-| 16 | **root_squared = root ** 2** | Squares the candidate. Python's power operator squares the candidate, calculating it multiplied by itself. |
-| 18 | **if root_squared == square_target:** | Checks whether the midpoint is an exact solution. This is an optional early exit; the tolerance check is still needed because many square roots are not reached exactly in floating-point arithmetic. |
+| 16 | `root_squared = root ` 2** | Squares the candidate. Python's power operator squares the candidate, calculating it multiplied by itself. |
+| 18 | `if root_squared == square_target:` | Checks whether the midpoint is an exact solution. This is an optional early exit; the tolerance check is still needed because many square roots are not reached exactly in floating-point arithmetic. |
 | 19–21 | **print(...)** | Prints the required approximate-result message. The f-string inserts the actual target and candidate value into the message. |
 | 22 | **return root** | Returns the exact midpoint and stops the function when the equality check succeeds. |
-| 24 | **if root_squared < square_target:** | Checks whether the midpoint is too small. Squaring a non-negative number preserves its order, so a square below the target means the midpoint is below the square root. |
+| 24 | `if root_squared < square_target:` | Checks whether the midpoint is too small. Squaring a non-negative number preserves its order, so a square below the target means the midpoint is below the square root. |
 | 25 | **lower = root** | Discards the lower half of the interval by moving the lower boundary to the midpoint. The answer must be above this candidate. |
 | 26 | **else:** | Handles the remaining comparison case. Exact equality has already returned, so this branch means the squared midpoint is greater than the target. |
 | 27 | **upper = root** | Discards the upper half of the interval by moving the upper boundary down to the midpoint. |
@@ -169,12 +169,12 @@ The line numbers below match the non-empty lines in **square_root_bisection.py**
 | 34 | **return root** | Returns the approximation and ends the function once the tolerance requirement is satisfied. |
 | 36 | **print(...)** | This line is reached only when the loop finishes without finding an exact result or a sufficiently narrow interval. It prints the required failure message. |
 | 37 | **return None** | Indicates that the function did not achieve the requested tolerance within the permitted iterations. |
-| 40 | **if __name__ == "__main__":** | Runs the examples only when this file is executed directly. If another Python file imports the function, these demonstrations do not run automatically. |
-| 41 | **square_root_bisection(81, 1e-3, 50)** | Tests an integer target with a tolerance of $10^{-3}$ and a 50-iteration limit. |
-| 42 | **square_root_bisection(225, 1e-3, 100)** | Tests a larger perfect square with a 100-iteration limit. |
-| 43 | **square_root_bisection(225, 1e-7, 10)** | Deliberately tests insufficient iterations. It should print the failure message and return **None**. |
-| 44 | **square_root_bisection(0.001, 1e-7, 50)** | Tests a small positive target below $1$, checking that the initial upper bound is chosen correctly. |
-| 45 | **square_root_bisection(0.25, 1e-7, 50)** | Tests another target below $1$. The exact midpoint $0.5$ can be found during the search. |
+| 40 | `if __name__ == "__main__":` | Runs the examples only when this file is executed directly. If another Python file imports the function, these demonstrations do not run automatically. |
+| 41 | `square_root_bisection(81, 1e-3, 50)` | Tests an integer target with a tolerance of $10^{-3}$ and a 50-iteration limit. |
+| 42 | `square_root_bisection(225, 1e-3, 100)` | Tests a larger perfect square with a 100-iteration limit. |
+| 43 | `square_root_bisection(225, 1e-7, 10)` | Deliberately tests insufficient iterations. It should print the failure message and return **None**. |
+| 44 | `square_root_bisection(0.001, 1e-7, 50)` | Tests a small positive target below $1$, checking that the initial upper bound is chosen correctly. |
+| 45 | `square_root_bisection(0.25, 1e-7, 50)` | Tests another target below $1$. The exact midpoint $0.5$ can be found during the search. |
 
 ## 7. Important Python ideas used
 
@@ -186,7 +186,7 @@ In the function definition:
 def square_root_bisection(square_target, tolerance=0.01, maximum=100):
 ~~~
 
-A call such as **square_root_bisection(25)** uses both defaults. A call such as **square_root_bisection(25, 1e-7, 50)** overrides them.
+A call such as `square_root_bisection(25)` uses both defaults. A call such as `square_root_bisection(25, 1e-7, 50)` overrides them.
 
 ### The exponentiation operator
 
