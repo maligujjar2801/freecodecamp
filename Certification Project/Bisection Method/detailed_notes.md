@@ -2,13 +2,13 @@
 
 ## 1. Project goal
 
-The task is to write a function named **square_root_bisection** that approximates the square root of a non-negative number without importing a module.
+The task is to write a function named `square_root_bisection` that approximates the square root of a non-negative number without importing a module.
 
 The function accepts three parameters:
 
-- **square_target**: the number whose square root is being found.
-- **tolerance**: the accepted maximum width of the remaining search interval. The default is **0.01**.
-- **maximum**: the maximum number of bisection iterations. The default is **100**.
+- `square_target`: the number whose square root is being found.
+- `tolerance`: the accepted maximum width of the remaining search interval. The default is **0.01**.
+- `maximum`: the maximum number of bisection iterations. The default is **100**.
 
 The function must also follow the exact messages and return behaviour required by the freeCodeCamp lab.
 
@@ -17,13 +17,13 @@ The function must also follow the exact messages and return behaviour required b
 Finding the square root of a number is equivalent to finding a value $x$ that satisfies:
 
 $$
-x^2 = \text{square\_target}
+x^2 = T
 $$
 
 We can rearrange this as a root-finding problem:
 
 $$
-f(x) = x^2 - \text{square\_target} = 0
+f(x) = x^2 - T = 0
 $$
 
 The bisection method does not need to guess the answer directly. It keeps an interval containing the answer and repeatedly cuts that interval in half.
@@ -58,16 +58,16 @@ The interval may be much wider than necessary at the beginning. That is fine: bi
 Calculate the midpoint:
 
 $$
-m = \frac{\text{lower}+\text{upper}}{2}
+m = \frac{L+U}{2}
 $$
 
 Then square it and compare the result with the target.
 
 | Comparison | Meaning | Correct update |
 |---|---|---|
-| $m^2 < \text{target}$ | The midpoint is below the positive square root. | Move the lower boundary up to $m$. |
-| $m^2 > \text{target}$ | The midpoint is above the positive square root. | Move the upper boundary down to $m$. |
-| $m^2 = \text{target}$ | The exact square root has been found. | Return the midpoint immediately. |
+| $m^2 < T$ | The midpoint is below the positive square root. | Move the lower boundary up to $m$. |
+| $m^2 > T$ | The midpoint is above the positive square root. | Move the upper boundary down to $m$. |
+| $m^2 = T$ | The exact square root has been found. | Return the midpoint immediately. |
 
 **The comparison directions are important:** a midpoint that is too small moves the lower boundary up; a midpoint that is too large moves the upper boundary down.
 
@@ -90,13 +90,13 @@ Each comparison discards the half that cannot contain the answer. The interval k
 The interval width is:
 
 $$
-\text{width} = \text{upper} - \text{lower}
+\text{width} = U - L
 $$
 
 The algorithm checks whether:
 
 $$
-\text{upper} - \text{lower} \leq \text{tolerance}
+U - L \leq \varepsilon
 $$
 
 When this condition becomes true, the search interval is sufficiently narrow, so the function returns its midpoint.
